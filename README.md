@@ -72,5 +72,5 @@ A real-time chat application built with Flutter and WebSocket.
 - Authentication implemented using JWT tokens
 - Local server must be running for chat functionality
 - Text messages only supported (no media files)
-- Server runs on localhost (10.0.2.2:3001 for Android emulator)
+- Server runs on localhost
 - Maximum of 50 messages displayed per screen, older messages shift out as new ones arrive
