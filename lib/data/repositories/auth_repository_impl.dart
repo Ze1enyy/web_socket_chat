@@ -8,10 +8,14 @@ import 'package:web_socket_chat/utils/url.dart';
 
 @Injectable(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {
+  final http.Client client;
+
+  AuthRepositoryImpl({http.Client? client}) : client = client ?? http.Client();
+
   @override
   Future<String?> login(String username) async {
     try {
-      final response = await http.post(
+      final response = await client.post(
         Uri.parse(Url.loginUrl),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({'username': username}),
@@ -35,7 +39,7 @@ class AuthRepositoryImpl implements AuthRepository {
     } on FormatException {
       throw LoginException('Invalid response format');
     } catch (e) {
-      rethrow;
+      throw LoginException(e.toString());
     }
   }
 }

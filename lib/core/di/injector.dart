@@ -6,4 +6,4 @@ final getIt = GetIt.instance;
 
 /// Initialize DI
 @injectableInit
-GetIt configureDependencies() => getIt.init();
+void configureDependencies() => getIt.init();
