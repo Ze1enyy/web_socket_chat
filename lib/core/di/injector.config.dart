@@ -11,6 +11,7 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:http/http.dart' as _i519;
 import 'package:injectable/injectable.dart' as _i526;
+import 'package:web_socket_chat/core/di/injector.dart' as _i794;
 import 'package:web_socket_chat/core/router/router.dart' as _i730;
 import 'package:web_socket_chat/data/repositories/auth_repository_impl.dart'
     as _i389;
@@ -38,7 +39,9 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
+    final registerModule = _$RegisterModule();
     gh.factory<_i730.AppRouter>(() => _i730.AppRouter());
+    gh.singleton<_i519.Client>(() => registerModule.httpClient);
     gh.singleton<_i190.ChatRepository>(() => _i872.ChatRepositoryImpl());
     gh.factory<_i432.SocketConnectionCubit>(
         () => _i432.SocketConnectionCubit(gh<_i190.ChatRepository>()));
@@ -51,3 +54,5 @@ extension GetItInjectableX on _i174.GetIt {
     return this;
   }
 }
+
+class _$RegisterModule extends _i794.RegisterModule {}
