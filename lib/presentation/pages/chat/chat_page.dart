@@ -64,17 +64,19 @@ class _ChatPageState extends State<ChatPage> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          const _MessagesListView(),
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: _ChatTextField(
-              messageController: _messageController,
-              sendMessage: _sendMessage,
+      body: SafeArea(
+        child: Column(
+          children: [
+            const _MessagesListView(),
+            Padding(
+              padding: const EdgeInsets.all(8),
+              child: _ChatTextField(
+                messageController: _messageController,
+                sendMessage: _sendMessage,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
